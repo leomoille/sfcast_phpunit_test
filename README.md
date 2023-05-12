@@ -77,7 +77,7 @@ bin/phpunit
 
 ```
 
-And with human readable output
+And with human-readable output
 
 ```
 vendor/bin/phpunit --testdox
