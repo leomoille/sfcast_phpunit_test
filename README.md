@@ -72,13 +72,18 @@ composer require --dev symfony/test-pack
 
 ```
 vendor/bin/phpunit
-```
-
-or
-
-```
+# or
 bin/phpunit
+
 ```
+
+And with human readable output
+
+```
+vendor/bin/phpunit --testdox
+```
+
+
 
 ## PHPUnit documentation
 
