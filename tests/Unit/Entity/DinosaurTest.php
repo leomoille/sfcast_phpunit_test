@@ -24,12 +24,23 @@ class DinosaurTest extends TestCase
 
     public function testDinosaurOver10MetersOrGreaterIsLarge(): void
     {
-        $dino = new Dinosaur(
-            name: 'Big Eaty',
-            length: 10,
-        );
+        $dino = new Dinosaur(name: 'Big Eaty', length: 10);
 
         self::assertSame('Large', $dino->getSizeDescription(), 'This is supposed to be a Large dinosaur');
+    }
+
+    public function testDinosaurBetween5And9MetersIsMedium(): void
+    {
+        $dino = new Dinosaur(name: 'Big Eaty', length: 5);
+
+        self::assertSame('Medium', $dino->getSizeDescription(), 'This is supposed to be a Medium dinosaur');
+    }
+
+    public function testDinosaurUnder5MetersIsSmall(): void
+    {
+        $dino = new Dinosaur(name: 'Big Eaty', length: 4);
+
+        self::assertSame('Small', $dino->getSizeDescription(), 'This is supposed to be a Small dinosaur');
     }
 
 }
