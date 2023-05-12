@@ -3,6 +3,7 @@
 namespace App\Tests\Unit\Entity;
 
 use App\Entity\Dinosaur;
+use Generator;
 use PHPUnit\Framework\TestCase;
 
 class DinosaurTest extends TestCase
@@ -22,25 +23,21 @@ class DinosaurTest extends TestCase
         self::assertSame('Paddock A', $dino->getEnclosure());
     }
 
-    public function testDinosaurOver10MetersOrGreaterIsLarge(): void
+    /**
+     * @dataProvider sizeDescriptionProvider
+     */
+    public function testDinosaurHasCorrectSizeDescriptionFromLength(int $length, string $exceptedSize): void
     {
-        $dino = new Dinosaur(name: 'Big Eaty', length: 10);
+        $dino = new Dinosaur(name: 'Big Eaty', length: $length);
 
-        self::assertSame('Large', $dino->getSizeDescription(), 'This is supposed to be a Large dinosaur');
+        self::assertSame($exceptedSize, $dino->getSizeDescription());
     }
 
-    public function testDinosaurBetween5And9MetersIsMedium(): void
+    public function sizeDescriptionProvider(): Generator
     {
-        $dino = new Dinosaur(name: 'Big Eaty', length: 5);
-
-        self::assertSame('Medium', $dino->getSizeDescription(), 'This is supposed to be a Medium dinosaur');
-    }
-
-    public function testDinosaurUnder5MetersIsSmall(): void
-    {
-        $dino = new Dinosaur(name: 'Big Eaty', length: 4);
-
-        self::assertSame('Small', $dino->getSizeDescription(), 'This is supposed to be a Small dinosaur');
+        yield '10 Meter Large Dino' => [10, 'Large'];
+        yield '5 Meter Medium Dino' => [5, 'Medium'];
+        yield '4 Meter Small Dino' => [4, 'Small'];
     }
 
 }
