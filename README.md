@@ -86,3 +86,11 @@ vendor/bin/phpunit --testdox
 ## PHPUnit documentation
 
 [> Documentation](https://docs.phpunit.de/en/main/)
+
+## Incomplete tests
+
+If test is not implemented, we can use
+
+```
+$this->markTestIncomplete();
+```
