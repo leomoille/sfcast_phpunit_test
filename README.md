@@ -94,3 +94,9 @@ If test is not implemented, we can use
 ```
 $this->markTestIncomplete();
 ```
+
+# Execute only certain test
+
+```
+vendor/bin/phpunit --filter testThingToTest
+```

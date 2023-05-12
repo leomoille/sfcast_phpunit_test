@@ -48,12 +48,23 @@ class DinosaurTest extends TestCase
         self::assertTrue($dino->isAcceptingVisitors());
     }
 
-    public function testIsNotAcceptVisitorsIfSick(): void
-    {
+    /**
+     * @dataProvider healthStatusProvider
+     */
+    public function testIsAcceptingVisitorsBasedOnHealthStatus(
+        healthStatus $healthStatus,
+        bool $expectedVisitorsStatus
+    ): void {
         $dino = new Dinosaur('Bumpy');
-        $dino->setHealth(healthStatus::SICK);
+        $dino->setHealth($healthStatus);
 
-        self::assertFalse($dino->isAcceptingVisitors());
+        self::assertSame($expectedVisitorsStatus, $dino->isAcceptingVisitors());
+    }
+
+    public function healthStatusProvider(): Generator
+    {
+        yield 'Sick dino is not accepting visitors' => [healthStatus::SICK, false];
+        yield 'Hungry dino is accepting visitors' => [healthStatus::HUNGRY, true];
     }
 
 }
