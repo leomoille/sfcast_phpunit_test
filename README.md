@@ -67,3 +67,19 @@ us do what we love!
 ```
 composer require --dev symfony/test-pack
 ```
+
+## Execute PHPUnit
+
+```
+vendor/bin/phpunit
+```
+
+or
+
+```
+bin/phpunit
+```
+
+## PHPUnit documentation
+
+[> Documentation](https://docs.phpunit.de/en/main/)
